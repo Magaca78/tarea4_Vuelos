@@ -28,4 +28,24 @@ public class Vuelo {
         this.tipovuelo = tipovuelo;
     }
 
+    public String getOrigen() {
+        return origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public double getDuracion() {
+        return duracion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public TipoVuelo getTipovuelo() {
+        return tipovuelo;
+    }
+
 }

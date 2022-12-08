@@ -1,20 +1,62 @@
 [
     {
-        "origen": "Manizales",
-        "destino": "Medellin",
+        "origen": "manizales",
+        "destino": "medellin",
         "duracion": 1.5,
         "precio": 95000.0
     },
     {
-        "origen": "Medellin",
-        "destino": "Cartagena",
+        "origen": "medellin",
+        "destino": "cartagena",
         "duracion": 3.5,
         "precio": 295000.0
     },
     {
-        "origen": "Manizales",
-        "destino": "Cartagena",
-        "duracion": 8.5,
-        "precio": 500000.0
+        "origen": "manizales",
+        "destino": "pereira",
+        "duracion": 1.0,
+        "precio": 8000.0
+    },
+    {
+        "origen": "manizales",
+        "destino": "pereira",
+        "duracion": 2.0,
+        "precio": 10000.0
+    },
+    {
+        "origen": "pereira",
+        "destino": "cartagena",
+        "duracion": 11.5,
+        "precio": 85000.0
+    },
+    {
+        "origen": "armenia",
+        "destino": "necocli",
+        "duracion": 10.0,
+        "precio": 80000.0
+    },
+    {
+        "origen": "bogota",
+        "destino": "cali",
+        "duracion": 5.0,
+        "precio": 70000.0
+    },
+    {
+        "origen": "armenia",
+        "destino": "bogota",
+        "duracion": 6.0,
+        "precio": 60000.0
+    },
+    {
+        "origen": "pasto",
+        "destino": "neiva",
+        "duracion": 9.0,
+        "precio": 120000.0
+    },
+    {
+        "origen": "neiva",
+        "destino": "rionegro",
+        "duracion": 1.0,
+        "precio": 8000.0
     }
 ]

@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,23 +12,38 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**
+ * Clase que permite leer un archivo JSON enviado
+ */
 public class Lector {
 
-    public List<String[]> Leer(String ruta) throws IOException, ParseException {
+    public List<String[]> Leer(String ruta) {
 
-        List<String[]> rutas = new ArrayList<>();
-        JSONParser parser = new JSONParser();
-        FileReader fileReader;
+        try {
+            List<String[]> rutas = new ArrayList<>();
+            JSONParser parser = new JSONParser();
+            FileReader fileReader;
 
-        File file = new File(ruta);
-        fileReader = new FileReader(file);
+            File file = new File(ruta);
+            fileReader = new FileReader(file);
 
-        JSONArray array = (JSONArray) parser.parse(fileReader);
+            JSONArray array = (JSONArray) parser.parse(fileReader);
 
-        for (int i = 0; i < array.size(); i++) {
-            JSONObject obj = (JSONObject) array.get(i);
-            parseObject(obj, rutas);
+            for (int i = 0; i < array.size(); i++) {
+                JSONObject obj = (JSONObject) array.get(i);
+                parseObject(obj, rutas);
+            }
+
+            return rutas;
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getStackTrace() + " :File Not Found");
+        } catch (ParseException e) {
+            System.out.println(e.getStackTrace() + " :Could not parse");
+        } catch (IOException e) {
+            System.out.println(e.getStackTrace() + " :IOException");
         }
+        return null;
+
         /*
          * 
          * for (String[] strings : rutas) {
@@ -37,8 +53,6 @@ public class Lector {
          * 
          * }
          */
-
-        return rutas;
 
     }
 
