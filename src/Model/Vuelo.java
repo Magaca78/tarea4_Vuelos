@@ -1,3 +1,5 @@
+package Model;
+
 /**
  * Representa un vuelo dese un origen a un destino, que puede estar conformado
  * por 1 o 2 rutas.
@@ -18,6 +20,12 @@ public class Vuelo {
 
     public void adicionarTipo(String tipo) {
 
+        this.setTipovuelo(new TipoVuelo(tipo));
+
+    }
+
+    public void setTipovuelo(TipoVuelo tipovuelo) {
+        this.tipovuelo = tipovuelo;
     }
 
 }
