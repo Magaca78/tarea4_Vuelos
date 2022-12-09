@@ -18,7 +18,7 @@ public class Pruebas {
         sc.close();
         System.out.println();
         System.out.println("-------------------------------------------------");
-        System.out.println("Busqueda de vuelos de " + origen + " a " + destino + " (directos y con escala)");
+        System.out.println("Busqueda de vuelos de " + origen + " a " + destino + " (directos o con escala)");
         System.out.println("-------------------------------------------------");
         for (Vuelo vuelo : control.mostrarVuelos(origen, destino)) {
 
