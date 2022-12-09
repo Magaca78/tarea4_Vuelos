@@ -17,8 +17,7 @@ public class ControlMostrarVuelo {
         lector = new Lector();
     }
 
-    public List<Vuelo> mostrarVuelos(String origen, String destino)
-            throws Exception {
+    public List<Vuelo> mostrarVuelos(String origen, String destino)throws Exception {
 
         List<String[]> rutas = this.cargarRutas();
 
@@ -40,7 +39,7 @@ public class ControlMostrarVuelo {
 
     private List<String[]> cargarRutas() throws Exception {
 
-        return this.lector.Leer("src/Json/Rutas.json");
+        return this.lector.Leer("C:/Users/Jenny/Desktop/Ing Software 1/tarea4_Vuelos/src/JSON/Rutas");
 
     }
 
