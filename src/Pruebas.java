@@ -20,7 +20,7 @@ public class Pruebas {
         System.out.println("-------------------------------------------------");
         System.out.println("Busqueda de vuelos de " + origen + " a " + destino + " (directos o con escala)");
         System.out.println("-------------------------------------------------");
-        for (Vuelo vuelo : control.mostrarVuelos(origen, destino)) {
+        for (Vuelo vuelo : control.mostrarVuelos(origen, destino, control.cargarRutas("src/Json/Rutas.json"))) {
 
             System.out.println(
                     "Origen: " + vuelo.getOrigen() + "\n" + "Destino: " + vuelo.getDestino() + "\n" + "Duracion: "

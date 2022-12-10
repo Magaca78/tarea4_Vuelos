@@ -17,32 +17,45 @@ public class ControlMostrarVuelo {
         lector = new Lector();
     }
 
-    public List<Vuelo> mostrarVuelos(String origen, String destino)throws Exception {
-
-        List<String[]> rutas = this.cargarRutas();
+    /**
+     * Muestra la lista de vuelos disponibles , verificando que se cumplan con las
+     * condiciones necesarias:
+     * el JSON de rutas debe tener el formato que corresponde.
+     * Debe existir alguna ruta con ese origen y alguna con ese destino.
+     * 
+     * @param origen
+     * @param destino
+     * @param rutas
+     * @return
+     * @throws Exception
+     */
+    public List<Vuelo> mostrarVuelos(String origen, String destino, List<String[]> rutas) throws Exception {
 
         if (!validarVuelo(origen, destino, rutas)) {
-
             throw new VueloException("No hay rutas para ese vuelo");
         }
+
         adicionarVuelo(origen, destino, rutas);
 
         if (vuelos.size() == 0) {
-
             throw new VueloException("No se pudo encontrar ningun vuelo");
-
         }
-
         return vuelos;
-
     }
 
-    private List<String[]> cargarRutas() throws Exception {
-
-        return this.lector.Leer("C:/Users/Jenny/Desktop/Ing Software 1/tarea4_Vuelos/src/JSON/Rutas");
-
+    public List<String[]> cargarRutas(String ruta) throws Exception {
+        return this.lector.leer(ruta);
     }
 
+    /**
+     * Valida que el origen y destino existan en la ruta.
+     * 
+     * @param origen
+     * @param destino
+     * @param rutas
+     * @return
+     * @throws VueloException
+     */
     private boolean validarVuelo(String origen, String destino, List<String[]> rutas) throws VueloException {
 
         boolean existeDestino = false;
@@ -52,7 +65,6 @@ public class ControlMostrarVuelo {
 
             if (!verificarEstructuraJSON(ruta)) {
                 throw new VueloException("JSON incorrecto");
-
             }
             if (origen.equals(ruta[0])) {
                 existeOrigen = true;
@@ -60,7 +72,6 @@ public class ControlMostrarVuelo {
             if (destino.equals(ruta[1])) {
                 existeDestino = true;
             }
-
         }
 
         if (existeOrigen && existeDestino) {
@@ -71,6 +82,14 @@ public class ControlMostrarVuelo {
 
     }
 
+    /**
+     * Adiciona un vuelo a la lista de vuelos de tipo directo o escala que
+     * cumplan con el origen y el destino.
+     * 
+     * @param origen
+     * @param destino
+     * @param rutas
+     */
     private void adicionarVuelo(String origen, String destino, List<String[]> rutas) {
 
         for (String[] ruta : rutas) {
@@ -91,7 +110,6 @@ public class ControlMostrarVuelo {
                         Vuelo vuelo = new Vuelo(origen, destino, duracion, precio);
                         vuelo.adicionarTipo("escala");
                         vuelos.add(vuelo);
-
                     }
 
                 }
@@ -107,9 +125,7 @@ public class ControlMostrarVuelo {
         if (linea.length != 4) {
             return false;
         }
-
         return true;
-
     }
 
 }

@@ -13,11 +13,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- * Clase que permite leer un archivo JSON enviado
+ * Clase que permite leer un archivo JSON por medio de una ruta enviada por
+ * parametro
  */
 public class Lector {
 
-    public List<String[]> Leer(String ruta) {
+    public List<String[]> leer(String ruta) {
 
         try {
             List<String[]> rutas = new ArrayList<>();
@@ -33,8 +34,8 @@ public class Lector {
                 JSONObject obj = (JSONObject) array.get(i);
                 parseObject(obj, rutas);
             }
-
             return rutas;
+
         } catch (FileNotFoundException e) {
             System.out.println(e.getStackTrace() + " :File Not Found");
         } catch (ParseException e) {
@@ -43,17 +44,6 @@ public class Lector {
             System.out.println(e.getStackTrace() + " :IOException");
         }
         return null;
-
-        /*
-         * 
-         * for (String[] strings : rutas) {
-         * System.out.println("Origen: " + strings[0] + "\n" +
-         * "Destino: " + strings[1]);
-         * System.out.println("---------------------------");
-         * 
-         * }
-         */
-
     }
 
     private static void parseObject(JSONObject obj, List<String[]> rutas) {
